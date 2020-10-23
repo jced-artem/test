@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}List of all items{% endblock %}
+
+{% block body %}
+    <h1>List of all items</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Link</th>
+                <th>Code</th>
+                <th>Hits</th>
+                <th>UserId</th>
+                <th>ExpiresAt</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for short_url in short_urls %}
+            <tr>
+                <td>{{ short_url.link }}</td>
+                <td>{{ short_url.code }}</td>
+                <td>{{ short_url.hits }}</td>
+                <td>{{ short_url.userId }}</td>
+                <td>{{ short_url.expiresAt ? short_url.expiresAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('short_url_new') }}">Create new</a>
+{% endblock %}
