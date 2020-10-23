@@ -25,8 +25,8 @@ class ShortUrl
 
     /**
      * @var string
-	 * @Assert\Url
-	 * @Assert\NotBlank
+     * @Assert\Url
+     * @Assert\NotBlank
      *
      * @ORM\Column(name="link", type="string", length=255, nullable=false)
      */
@@ -48,7 +48,7 @@ class ShortUrl
 
     /**
      * @var int|null
-	 * @Assert\NotBlank
+     * @Assert\NotBlank
      *
      * @ORM\Column(name="user_id", type="integer", nullable=true, options={"unsigned"=true})
      */
@@ -61,101 +61,101 @@ class ShortUrl
      */
     private $expiresAt;
 
-	/**
-	 * @return int
-	 */
-	public function getId(): int
-	{
-		return $this->id;
-	}
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
 
-	/**
-	 * @return string
-	 */
-	public function getLink(): string
-	{
-		return $this->link;
-	}
+    /**
+     * @return string
+     */
+    public function getLink(): string
+    {
+        return $this->link;
+    }
 
-	/**
-	 * @param string $link
-	 * @return ShortUrl
-	 */
-	public function setLink(string $link): ShortUrl
-	{
-		$this->link = $link;
-		return $this;
-	}
+    /**
+     * @param string $link
+     * @return ShortUrl
+     */
+    public function setLink(string $link): ShortUrl
+    {
+        $this->link = $link;
+        return $this;
+    }
 
-	/**
-	 * @return string
-	 */
-	public function getCode(): string
-	{
-		return $this->code;
-	}
+    /**
+     * @return string
+     */
+    public function getCode(): string
+    {
+        return $this->code;
+    }
 
-	/**
-	 * @param string $code
-	 * @return ShortUrl
-	 */
-	public function setCode(string $code): ShortUrl
-	{
-		$this->code = $code;
-		return $this;
-	}
+    /**
+     * @param string $code
+     * @return ShortUrl
+     */
+    public function setCode(string $code): ShortUrl
+    {
+        $this->code = $code;
+        return $this;
+    }
 
-	/**
-	 * @return int
-	 */
-	public function getHits(): int
-	{
-		return $this->hits;
-	}
+    /**
+     * @return int
+     */
+    public function getHits(): int
+    {
+        return $this->hits;
+    }
 
-	/**
-	 * @param int $hits
-	 * @return ShortUrl
-	 */
-	public function setHits(int $hits): ShortUrl
-	{
-		$this->hits = $hits;
-		return $this;
-	}
+    /**
+     * @param int $hits
+     * @return ShortUrl
+     */
+    public function setHits(int $hits): ShortUrl
+    {
+        $this->hits = $hits;
+        return $this;
+    }
 
-	/**
-	 * @return int|null
-	 */
-	public function getUserId(): ?int
-	{
-		return $this->userId;
-	}
+    /**
+     * @return int|null
+     */
+    public function getUserId(): ?int
+    {
+        return $this->userId;
+    }
 
-	/**
-	 * @param int|null $userId
-	 * @return ShortUrl
-	 */
-	public function setUserId(?int $userId): ShortUrl
-	{
-		$this->userId = $userId;
-		return $this;
-	}
+    /**
+     * @param int|null $userId
+     * @return ShortUrl
+     */
+    public function setUserId(?int $userId): ShortUrl
+    {
+        $this->userId = $userId;
+        return $this;
+    }
 
-	/**
-	 * @return \DateTime
-	 */
-	public function getExpiresAt(): ?\DateTime
-	{
-		return $this->expiresAt;
-	}
+    /**
+     * @return \DateTime
+     */
+    public function getExpiresAt(): ?\DateTime
+    {
+        return $this->expiresAt;
+    }
 
-	/**
-	 * @param \DateTime $expiresAt
-	 * @return ShortUrl
-	 */
-	public function setExpiresAt(\DateTime $expiresAt): ShortUrl
-	{
-		$this->expiresAt = $expiresAt;
-		return $this;
-	}
+    /**
+     * @param \DateTime $expiresAt
+     * @return ShortUrl
+     */
+    public function setExpiresAt(\DateTime $expiresAt): ShortUrl
+    {
+        $this->expiresAt = $expiresAt;
+        return $this;
+    }
 }

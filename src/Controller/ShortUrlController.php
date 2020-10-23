@@ -28,11 +28,11 @@ class ShortUrlController extends AbstractController
 
     /**
      * @Route("/new", name="short_url_new", methods={"GET","POST"})
-	 *
-	 * @param Request $request
-	 * @param Shortener $shortener
-	 * @return Response
-	 */
+     *
+     * @param Request $request
+     * @param Shortener $shortener
+     * @return Response
+     */
     public function new(Request $request, Shortener $shortener): Response
     {
         $shortUrl = new ShortUrl();
@@ -40,13 +40,13 @@ class ShortUrlController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-        	$shortUrl->setCode('tmp');
+            $shortUrl->setCode('tmp');
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($shortUrl);
             $entityManager->flush();
 
             $shortUrl->setCode($shortener->create($shortUrl->getId()));
-			$entityManager->flush();
+            $entityManager->flush();
 
             return $this->redirectToRoute('short_url_index');
         }
@@ -62,15 +62,15 @@ class ShortUrlController extends AbstractController
      */
     public function show(string $id): Response
     {
-    	/** @var ShortUrl $shortUrl */
-    	$shortUrl = $this->getDoctrine()->getRepository(ShortUrl::class)->findOneByCode($id);
-    	if (empty($shortUrl) or $shortUrl->getExpiresAt() < new \DateTime()) {
-    		throw $this->createNotFoundException();
-		}
+        /** @var ShortUrl $shortUrl */
+        $shortUrl = $this->getDoctrine()->getRepository(ShortUrl::class)->findOneByCode($id);
+        if (empty($shortUrl) or $shortUrl->getExpiresAt() < new \DateTime()) {
+            throw $this->createNotFoundException();
+        }
 
-    	$shortUrl->setHits($shortUrl->getHits() + 1);
-		$entityManager = $this->getDoctrine()->getManager();
-		$entityManager->flush();
+        $shortUrl->setHits($shortUrl->getHits() + 1);
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->flush();
 
         return $this->render('short_url/redirect.html.twig', [
             'short_url' => $shortUrl,
